@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`parser 1`] = `
+Object {
+  "props": Object {
+    "children": Array [
+      Object {
+        "props": Object {
+          "children": Array [
+            Object {
+              "props": Object {
+                "children": Array [
+                  Object {
+                    "props": Object {
+                      "children": Array [
+                        Object {
+                          "props": Object {
+                            "value": "Hello World!",
+                          },
+                          "type": "STRING",
+                        },
+                      ],
+                      "value": "h1",
+                    },
+                    "type": "ELEMENT",
+                  },
+                ],
+                "value": "body",
+              },
+              "type": "ELEMENT",
+            },
+          ],
+          "value": "html",
+        },
+        "type": "ELEMENT",
+      },
+    ],
+  },
+  "type": "DOCUMENT",
+}
+`;

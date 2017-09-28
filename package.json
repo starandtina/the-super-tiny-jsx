@@ -1,0 +1,24 @@
+{
+  "name": "the-super-tiny-jsx",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --coverage",
+    "test:watch": "jest --watch --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/starandtina/the-super-tiny-jsx.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/starandtina/the-super-tiny-jsx/issues"
+  },
+  "homepage": "https://github.com/starandtina/the-super-tiny-jsx#readme",
+  "devDependencies": {
+    "jest": "^21.2.1"
+  }
+}

@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`tokenizer 1`] = `
+Array [
+  Object {
+    "type": "ELEMENT",
+    "value": "html",
+  },
+  Object {
+    "type": "LEFT_CURLY_BRACKET",
+    "value": "{",
+  },
+  Object {
+    "type": "ELEMENT",
+    "value": "body",
+  },
+  Object {
+    "type": "LEFT_CURLY_BRACKET",
+    "value": "{",
+  },
+  Object {
+    "type": "ELEMENT",
+    "value": "h1",
+  },
+  Object {
+    "type": "LEFT_CURLY_BRACKET",
+    "value": "{",
+  },
+  Object {
+    "type": "STRING",
+    "value": "Hello World!",
+  },
+  Object {
+    "type": "RIGHT_CURLY_BRACKET",
+    "value": "}",
+  },
+  Object {
+    "type": "RIGHT_CURLY_BRACKET",
+    "value": "}",
+  },
+  Object {
+    "type": "RIGHT_CURLY_BRACKET",
+    "value": "}",
+  },
+]
+`;
