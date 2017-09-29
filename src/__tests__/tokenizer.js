@@ -6,6 +6,7 @@ it('tokenizer', () => {
       html {
         body {
           h1 {
+            123456789
             "Hello World!"
           }
         }

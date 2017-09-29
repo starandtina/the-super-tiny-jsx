@@ -39,3 +39,12 @@ Object {
   "type": "DOCUMENT",
 }
 `;
+
+exports[`parser: without arguments 1`] = `
+Object {
+  "props": Object {
+    "children": Array [],
+  },
+  "type": "DOCUMENT",
+}
+`;

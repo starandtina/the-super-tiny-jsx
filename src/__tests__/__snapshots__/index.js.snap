@@ -1,12 +1,29 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`compiler 1`] = `
-"<html>
+"<!DOCTYPE html>
+<html>
   <!-- comments  -->
   <body>
     <h1>
+      123456789
       Hello World!
     </h1>
+  </body>
+</html>"
+`;
+
+exports[`tag 1`] = `
+"<!DOCTYPE html>
+<html>
+  <!-- comments  -->
+  <body>
+    <h1>
+      Hello World! - ttttest
+    </h1>
+    <p>
+      xxoo
+    </p>
   </body>
 </html>"
 `;

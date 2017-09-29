@@ -1,6 +1,7 @@
 const {
   DOCUMENT,
   STRING,
+  NUMBER,
   COMMENT_ML,
   ELEMENT,
   LEFT_CURLY_BRACKET,
@@ -8,15 +9,11 @@ const {
 } = require('./TOKEN_TYPE')
 
 function generator(node) {
-  // console.log(JSON.stringify(node, null, ' '))
   const { type, props: { value, children } } = node
 
   switch (type) {
     case DOCUMENT:
-      return children.map(generator).join('\n')
-
-    case STRING:
-      return value
+      return `<!DOCTYPE html>\n${children.map(generator).join('\n')}`
 
     case COMMENT_ML:
       return `<!-- ${value}  -->`
@@ -37,7 +34,7 @@ function generator(node) {
       return `${fragementStart}${body}${fragementEnd}`
 
     default:
-      throw new TypeError(type)
+      return value
   }
 }
 

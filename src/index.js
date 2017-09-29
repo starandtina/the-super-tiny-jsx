@@ -17,4 +17,32 @@ function compiler(input) {
   return compose(generator, parser, tokenizer)(input)
 }
 
-module.exports = compiler
+function tag(input, ...substitutions) {
+  // Use raw template strings: we don’t want backslashes (\n etc.) to be interpreted
+  const raw = input.raw
+  let result = ''
+
+  substitutions.forEach((substitution, i) => {
+    // Retrieve the template string preceding the current substitution
+    let str = raw[i]
+
+    // If `substitution` is an Array (and not a string), then turn it into a string
+    if (Array.isArray(substitution)) {
+      substitution = substitution.join('')
+    }
+
+    result += str + substitution
+  })
+
+  // Take care of last template string
+  // As the number of template strings is always one plus the number of substitutions
+  // In other words: every substitution is always surrounded by two template strings
+  result += raw[raw.length - 1]
+
+  return compiler(result)
+}
+
+module.exports = {
+  compiler,
+  tag,
+}
