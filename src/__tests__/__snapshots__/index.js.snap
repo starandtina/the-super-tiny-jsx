@@ -3,12 +3,16 @@
 exports[`compiler 1`] = `
 "<!DOCTYPE html>
 <html>
-  <!-- comments  -->
+  <!-- multi line comment  -->
   <body>
-    <h1>
+    <h1 class=\\"h1\\" style=\\"color: red\\">
       123456789
+      <!-- single line comment  -->
       Hello World!
     </h1>
+    <button disabled=\\"true\\" type=\\"submit\\">
+      Submit
+    </button>
   </body>
 </html>"
 `;

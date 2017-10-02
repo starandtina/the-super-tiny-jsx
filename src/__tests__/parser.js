@@ -10,9 +10,13 @@ it('parser', () => {
     parser(
       tokenizer(`
         html {
+          /* multi line comment */
           body {
-            h1 {
-              "Hello World!"
+            h1 class="h1" style="color: red" {
+              "Hello World!" // single line comment
+            }
+            button disabled type="submit" {
+              "Submit"
             }
           }
         }

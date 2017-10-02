@@ -4,11 +4,14 @@ it('compiler', () => {
   expect(
     compiler(`
       html {
-        /* comments */
+        /* multi line comment */
         body {
-          h1 {
-            123456789
-            "Hello World!"
+          h1 class="h1" style="color: red" {
+            123456789 // single line comment
+            "Hello World!" 
+          }
+          button disabled type="submit" {
+            "Submit"
           }
         }
       }

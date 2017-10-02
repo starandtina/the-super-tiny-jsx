@@ -11,6 +11,10 @@ Array [
     "value": "{",
   },
   Object {
+    "type": "COMMENT_ML",
+    "value": "multi line comment",
+  },
+  Object {
     "type": "ELEMENT",
     "value": "body",
   },
@@ -23,12 +27,40 @@ Array [
     "value": "h1",
   },
   Object {
+    "type": "ELEMENT",
+    "value": "class",
+  },
+  Object {
+    "type": "EQUAL_SIGN",
+    "value": "=",
+  },
+  Object {
+    "type": "STRING",
+    "value": "h1",
+  },
+  Object {
+    "type": "ELEMENT",
+    "value": "style",
+  },
+  Object {
+    "type": "EQUAL_SIGN",
+    "value": "=",
+  },
+  Object {
+    "type": "STRING",
+    "value": "color: red",
+  },
+  Object {
     "type": "LEFT_CURLY_BRACKET",
     "value": "{",
   },
   Object {
     "type": "NUMBER",
     "value": "123456789",
+  },
+  Object {
+    "type": "COMMENT_SL",
+    "value": "single line comment",
   },
   Object {
     "type": "STRING",

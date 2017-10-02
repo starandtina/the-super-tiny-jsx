@@ -18,11 +18,21 @@
       </body>
     </html>
 */
-const TOKEN_TYPE = require('./TOKEN_TYPE')
+const {
+  ELEMENT,
+  STRING,
+  NUMBER,
+  COMMENT_ML,
+  COMMENT_SL,
+  LEFT_CURLY_BRACKET,
+  RIGHT_CURLY_BRACKET,
+  EQUAL_SIGN,
+} = require('./TOKEN_TYPE')
 
 const punctuation = {
-  '{': TOKEN_TYPE.LEFT_CURLY_BRACKET,
-  '}': TOKEN_TYPE.RIGHT_CURLY_BRACKET,
+  '{': LEFT_CURLY_BRACKET,
+  '}': RIGHT_CURLY_BRACKET,
+  '=': EQUAL_SIGN,
 }
 
 const WHITESPACE = /\s/
@@ -58,7 +68,7 @@ function tokenizer(input) {
         char = input[++current]
       }
 
-      tokens.push({ type: TOKEN_TYPE.NUMBER, value })
+      tokens.push({ type: NUMBER, value })
 
       continue
     }
@@ -76,7 +86,7 @@ function tokenizer(input) {
 
       char = input[++current]
 
-      tokens.push({ type: TOKEN_TYPE.STRING, value })
+      tokens.push({ type: STRING, value })
 
       continue
     }
@@ -90,12 +100,12 @@ function tokenizer(input) {
         char = input[++current]
       }
 
-      tokens.push({ type: TOKEN_TYPE.ELEMENT, value })
+      tokens.push({ type: ELEMENT, value })
 
       continue
     }
 
-    // Multi line COMMENT
+    // Parse a multiline comment
     if (char === '/' && input[current + 1] === '*') {
       const start = current
       // Read the string until we meet `*/`.
@@ -110,8 +120,29 @@ function tokenizer(input) {
       }
 
       tokens.push({
-        type: TOKEN_TYPE.COMMENT_ML,
+        type: COMMENT_ML,
         value: input.substring(start + 2, current - 2).trim(),
+      })
+
+      continue
+    }
+
+    // Parse a single line comment
+    if (char === '/' && input[current + 1] === '/') {
+      const start = current
+
+      // Read the string until we meet line break.
+      // Since we already know first 2 characters (`//`), start reading
+      // from `current + 2`:
+      for (current += 2; current < input.length; current++) {
+        if (input[current] === '\n' || input[current] === '\r') {
+          break
+        }
+      }
+
+      tokens.push({
+        type: COMMENT_SL,
+        value: input.substring(start + 2, current).trim(),
       })
 
       continue
@@ -124,9 +155,7 @@ function tokenizer(input) {
       continue
     }
 
-    if (char) {
-      throw new TypeError(`Unknown char: ${char}`)
-    }
+    throw new TypeError(`Unknown char: ${char}`)
   }
 
   return tokens

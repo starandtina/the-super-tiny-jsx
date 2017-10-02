@@ -4,6 +4,7 @@ const {
   ELEMENT,
   LEFT_CURLY_BRACKET,
   RIGHT_CURLY_BRACKET,
+  EQUAL_SIGN,
 } = require('./TOKEN_TYPE')
 
 function parser(tokens = []) {
@@ -23,10 +24,28 @@ function parser(tokens = []) {
       }
       // Skip the `element` token
       let token = tokens[++current]
+
+      // Attributes node
+      while (token.type !== LEFT_CURLY_BRACKET) {
+        const attrName = token.value
+
+        token = tokens[++current]
+
+        if (token.type !== EQUAL_SIGN) {
+          node.props[attrName] = true
+        } else {
+          const attrToken = tokens[++current]
+          node.props[attrName] = attrToken.value
+
+          token = tokens[++current]
+        }
+      }
+
       // Skip the `{` token
       token = tokens[++current]
 
-      while (token.type !== RIGHT_CURLY_BRACKET) {
+      // Children node
+      while (token && token.type !== RIGHT_CURLY_BRACKET) {
         node.props.children.push(walk())
 
         token = tokens[current]

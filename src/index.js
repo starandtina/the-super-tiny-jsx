@@ -9,7 +9,7 @@ const compose = (...fns) => x => fns.reduceRight((v, f) => f(v), x)
  *
  *   1. input  => tokenizer   => tokens
  *   2. tokens => parser      => ast
- *   --3. ast    => transformer => newAst--
+ *   ~~3. ast    => transformer => newAst~~
  *   4. newAst => generator   => output
  */
 

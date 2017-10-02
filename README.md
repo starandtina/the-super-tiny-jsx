@@ -1,8 +1,8 @@
 # the-super-tiny-jsx
 
-> Build your own and reinvent the wheel is the best practive to learn the essential parts under the hood.
+I always wonders how the **jsx** works, and how to transform the **jsx**  syntax into normal HTML string? Here is the super tiny demo for how to do it with compiler.
 
-## 
+> Build your own and reinvent the wheel is the best practive to learn the essential parts under the hood.
 
 ## API
 
@@ -13,10 +13,14 @@ We could defined our tiny `jsx` syntax below:
 ```
 tag`
   html {
-    /* comments */
+    /* multi line comment */
     body {
-      h1 {
-        "Hello World! - ${ttttest}"
+      h1 class="h1" style="color: red" {
+        123456789 // single line comment
+        "Hello World!" 
+      }
+      button disabled type="submit" {
+        "Submit"
       }
     }
   }
@@ -27,11 +31,15 @@ then, it could be transformed into HTML raw string with `tag` function.
 ```
 <!DOCTYPE html>
 <html>
-  <!-- comments  -->
+  <!-- multi line comment  -->
   <body>
-    <h1>
-      Hello World! - ttttest
+    <h1 class="h1" style="color: red">
+      Hello World!
+      <!-- single line comment  -->
     </h1>
+    <button disabled="true" type="submit">
+      Submit
+    </button>
   </body>
 </html>
 ```
@@ -53,7 +61,7 @@ compiler(`
 `)
 ```
 
-The output HTML:
+The output HTML looks like:
 
 ```
 <!DOCTYPE html>
@@ -79,6 +87,6 @@ yarn test
 
 ## Todos
 
-- Support `attributes`
-- Support single line comment
+- ~~Support `attributes`~~
+- ~~Support single line comment~~
 - Handle the self-closing tag

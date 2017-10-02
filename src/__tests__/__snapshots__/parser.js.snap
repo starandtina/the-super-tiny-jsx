@@ -9,6 +9,12 @@ Object {
           "children": Array [
             Object {
               "props": Object {
+                "value": "multi line comment",
+              },
+              "type": "COMMENT_ML",
+            },
+            Object {
+              "props": Object {
                 "children": Array [
                   Object {
                     "props": Object {
@@ -19,8 +25,32 @@ Object {
                           },
                           "type": "STRING",
                         },
+                        Object {
+                          "props": Object {
+                            "value": "single line comment",
+                          },
+                          "type": "COMMENT_SL",
+                        },
                       ],
+                      "class": "h1",
+                      "style": "color: red",
                       "value": "h1",
+                    },
+                    "type": "ELEMENT",
+                  },
+                  Object {
+                    "props": Object {
+                      "children": Array [
+                        Object {
+                          "props": Object {
+                            "value": "Submit",
+                          },
+                          "type": "STRING",
+                        },
+                      ],
+                      "disabled": true,
+                      "type": "submit",
+                      "value": "button",
                     },
                     "type": "ELEMENT",
                   },

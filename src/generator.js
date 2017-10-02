@@ -3,23 +3,28 @@ const {
   STRING,
   NUMBER,
   COMMENT_ML,
+  COMMENT_SL,
   ELEMENT,
   LEFT_CURLY_BRACKET,
   RIGHT_CURLY_BRACKET,
 } = require('./TOKEN_TYPE')
 
 function generator(node) {
-  const { type, props: { value, children } } = node
+  const { type, props: { value, children, ...rest } } = node
 
   switch (type) {
     case DOCUMENT:
       return `<!DOCTYPE html>\n${children.map(generator).join('\n')}`
 
     case COMMENT_ML:
+    case COMMENT_SL:
       return `<!-- ${value}  -->`
 
     case ELEMENT:
-      const fragementStart = `<${value}>`
+      const attrs = Object.keys(rest)
+        .reduce((acc, attrKey) => `${acc}${attrKey}="${rest[attrKey]}" `, '')
+        .trim()
+      const fragementStart = attrs ? `<${value} ${attrs}>` : `<${value}>`
       const fragementEnd = `</${value}>`
 
       const body = children.reduce((r, child) => {
